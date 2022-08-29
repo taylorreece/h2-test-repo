@@ -1,5 +1,16 @@
 name: learn-github-actions
-on: [push]
+on:
+  push:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: "A persons name"
+        required: true
+        default: "Taylor"
+      home:
+        description: "A persons home"
+        required: true
+        default: "Sioux Falls"
 jobs:
   check-bats-version:
     runs-on: ubuntu-latest
