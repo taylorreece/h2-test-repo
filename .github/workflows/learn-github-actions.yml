@@ -7,7 +7,7 @@ on:
         default: "john-doe"
         required: false
         type: string
-  workflow_call:
+  workflow_dispatch:
     inputs:
       username:
         description: "A username passed from the caller workflow"
