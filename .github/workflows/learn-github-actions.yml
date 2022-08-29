@@ -1,6 +1,15 @@
 name: learn-github-actions
 on:
   push:
+    inputs:
+      name:
+        description: "A persons name"
+        required: true
+        default: "Taylor"
+      home:
+        description: "A persons home"
+        required: true
+        default: "Sioux Falls"
   workflow_dispatch:
     inputs:
       name:
@@ -21,4 +30,4 @@ jobs:
           node-version: "14"
       - run: npm install -g bats
       - run: bats -v
-      - run: echo "name: ${{ inputs.name }}, home: ${{ inputs.home }}"
+      - run: echo name ${{ inputs.name }}, home ${{ inputs.home }}
