@@ -1,33 +1,17 @@
 name: learn-github-actions
 on:
-  push:
+  workflow_call:
     inputs:
-      name:
-        description: "A persons name"
-        required: true
-        default: "Taylor"
-      home:
-        description: "A persons home"
-        required: true
-        default: "Sioux Falls"
-  workflow_dispatch:
-    inputs:
-      name:
-        description: "A persons name"
-        required: true
-        default: "Taylor"
-      home:
-        description: "A persons home"
-        required: true
-        default: "Sioux Falls"
+      username:
+        description: "A username passed from the caller workflow"
+        default: "john-doe"
+        required: false
+        type: string
+
 jobs:
-  check-bats-version:
+  print-username:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: "14"
-      - run: npm install -g bats
-      - run: bats -v
-      - run: echo name ${{ inputs.name }}, home ${{ inputs.home }}
+      - name: Print the input name to STDOUT
+        run: echo The username is ${{ inputs.username }}
